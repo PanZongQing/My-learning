@@ -1,9 +1,28 @@
 package v1
 
-import "github.com/gin-gonic/gin"
+import (
+	"My-learning/pkg/e"
+	"github.com/gin-gonic/gin"
+	"github.com/unknwon/com"
+)
 
 //获取多个文章标签
 func GetTags(c *gin.Context) {
+	name := c.Query("name")
+	maps := make(map[string]interface{})
+	data := make(map[string]interface{})
+
+	if name != "" {
+		maps["name"] = name
+	}
+
+	var state int = -1
+	if arg := c.Query("state"); arg != "" {
+		state = com.StrTo(arg).MustInt()
+		maps["state"] = state
+
+	}
+	code := e.SUCCESS
 
 }
 
