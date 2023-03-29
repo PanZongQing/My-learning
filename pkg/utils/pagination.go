@@ -1,4 +1,4 @@
-package util
+package utils
 
 import (
 	"My-learning/pkg/setting"

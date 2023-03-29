@@ -1,9 +1,13 @@
 package v1
 
 import (
+	"My-learning/models"
 	"My-learning/pkg/e"
+	"My-learning/pkg/setting"
+	"My-learning/pkg/utils"
 	"github.com/gin-gonic/gin"
 	"github.com/unknwon/com"
+	"net/http"
 )
 
 //获取多个文章标签
@@ -23,6 +27,13 @@ func GetTags(c *gin.Context) {
 
 	}
 	code := e.SUCCESS
+	data["lists"] = models.GetTags(utils.GetPage(c), setting.PageSize, maps)
+	data["total"] = models.GetTagTotal(maps)
+	c.JSON(http.StatusOK, gin.H{
+		"code": code,
+		"msg":  e.GetMsg(code),
+		"data": data,
+	})
 
 }
 
