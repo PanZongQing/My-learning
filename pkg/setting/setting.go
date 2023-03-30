@@ -17,7 +17,7 @@ var (
 	JwtSecret string
 )
 
-//初始化函数
+// 初始化函数
 func init() {
 	var err error
 	Cfg, err = ini.Load("conf/app.ini") //读取配置文件
